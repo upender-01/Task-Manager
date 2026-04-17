@@ -2,12 +2,18 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin:"https://task-manager-lkml.vercel.app/",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json()); 
 
 // In-memory database
 let tasks = [];
-
+app.get("/" , (req, res){
+    res.send("Backend is running");
+});
 // GET /tasks - to return all tasks 
 app.get('/tasks', (req, res) => {
     res.json(tasks);
