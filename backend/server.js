@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors({
-    origin:"https://task-manager-lkml.vercel.app/",
+    origin:"https://task-manager-lkml.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
