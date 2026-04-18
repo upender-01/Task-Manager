@@ -69,7 +69,7 @@ export default function App() {
   const deleteTask = async (id) => {
     try {
       setError(null);
-      const res = await fetch(`${API_URL}/task/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${API_URL}/tasks/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Failed to delete task.');
       
       setTasks(tasks.filter(t => t.id !== id));
