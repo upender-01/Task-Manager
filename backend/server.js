@@ -11,7 +11,7 @@ app.use(express.json());
 
 // In-memory database
 let tasks = [];
-app.get("/" , (req, res){
+app.get("/" , (req, res)=>{
     res.send("Backend is running");
 });
 // GET /tasks - to return all tasks 
