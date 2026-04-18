@@ -13,7 +13,7 @@ export default function App() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(API_URL);
+      const res = await fetch(`${API_URL}/tasks`);
       if (!res.ok) throw new Error('Failed to fetch tasks.');
       const data = await res.json();
       setTasks(data);
@@ -34,7 +34,7 @@ export default function App() {
     
     try {
       setError(null);
-      const res = await fetch(API_URL, {
+      const res = await fetch(`${API_URL}/tasks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title }),
@@ -52,7 +52,7 @@ export default function App() {
   const toggleComplete = async (id, currentStatus) => {
     try {
       setError(null);
-      const res = await fetch(`${API_URL}/${id}`, {
+      const res = await fetch(`${API_URL}/tasks/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ completed: !currentStatus }),
@@ -69,7 +69,7 @@ export default function App() {
   const deleteTask = async (id) => {
     try {
       setError(null);
-      const res = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${API_URL}/task/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Failed to delete task.');
       
       setTasks(tasks.filter(t => t.id !== id));
